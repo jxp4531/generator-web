@@ -1,0 +1,32 @@
+@tab-transition: 0.1s;
+.tab-nav {
+
+  &.fade {
+    .caret {
+      transition: transform @tab-transition;
+    }
+  }
+
+  & .active {
+    .caret {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.tab-pane {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  &.fade {
+    transition: opacity @tab-transition;
+    opacity: 0.3;
+  }
+
+  &.fade.in {
+    opacity: 1;
+  }
+}

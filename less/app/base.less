@@ -1,0 +1,141 @@
+@top-header-height: 80px;
+@top-link-hover-color: #fd9e11;
+#top-header {
+  height: @top-header-height;
+  margin-bottom: 30px;
+  background-color: #232323;
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: @top-link-hover-color;
+  }
+}
+
+#top-nav {
+  position: relative;
+  height: @top-header-height;
+  line-height: 20px;
+
+  .logo {
+    position: absolute;
+    left: -4px;
+    top: 20px;
+
+    &, > img {
+      width: 240px;
+      height: 88px;
+    }
+  }
+
+  .login-block, .language-block, .menu-block {
+    position: absolute;
+  }
+
+  .login-block, .language-block {
+    font-size: @font-size-small;
+    height: 20px;
+    top: 0;
+    color: #999;
+
+    a {
+      color: #999;
+    }
+  }
+
+  ul > li {
+    float: left;
+
+    > a {
+      display: block;
+    }
+  }
+
+  .language-block {
+    right: 160px;
+
+    a:hover {
+      color: #fff;
+    }
+
+    a {
+      padding-right: 24px;
+    }
+  }
+
+  .login-block {
+    right: 0;
+
+    a {
+      color: #fff;
+    }
+
+    a:hover {
+      color: @top-link-hover-color;
+      text-decoration: underline;
+    }
+  }
+
+  .menu-block {
+    bottom: 0;
+    right: 0;
+
+    a {
+      padding: 14px 23px;
+    }
+
+    .open a, .active a {
+      color: @top-link-hover-color;
+    }
+  }
+
+  .brand-block {
+    width: 500px;
+  }
+}
+
+.layout-container {
+  min-width: @page-width;
+  position: relative;
+}
+
+.layout-block {
+  width: @page-width;
+  margin-bottom: 14px;
+  .center-block();
+}
+
+.layout-container-inner {
+
+}
+
+.make-filter-btn-group() {
+  @height: 34px;
+  .filter-btn-group {
+    height: @height;
+    font-size: @font-size-base;
+
+    > .btn {
+      float: right;
+    }
+
+    .btn-clear {
+      padding: 0 10px;
+      .button-size(auto, @height, 0);
+      .button-variant(#1f91f1, transparent, transparent);
+
+      &:active {
+        color: darken(#1f91f1, 10%);
+        box-shadow: none;
+      }
+    }
+
+    .btn-sure {
+      .button-size(80px, @height, 0);
+      .button-variant(#fff, #1f91f1, transparent);
+    }
+  }
+}
+.make-filter-btn-group();

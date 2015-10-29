@@ -1,0 +1,145 @@
+.make-goods-detail() {
+
+  .goods-block {
+    &:after, &:before {
+      transition: opacity 0.3s;
+      opacity: 0.5;
+    }
+
+    &.in:after, &.in:before {
+      opacity: 1;
+    }
+  }
+
+  .goods-block.detail-open {
+    &:after, &:before {
+      top: 207px;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    &:after {
+      border-bottom-color: #fff;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+    &:before {
+      border-bottom-color: #D8D5D5;
+      border-width: 9px;
+      margin-left: -9px;
+    }
+  }
+
+  .grid4-row {
+    .goods-block.detail-open {
+      &:after, &:before {
+        top: 255px;
+      }
+    }
+  }
+
+  .goods-detail-block {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 15px !important;
+    transition: all 0.3s;
+    opacity: 0.4;
+    transform: scale(1, 0.6);
+    transform-origin: 50% 0;
+    position: relative;
+
+    &.in {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+
+    .goods-detail {
+      background-color: #fff;
+      padding: 15px 90px;
+      box-shadow: 0 0 11px -4px rgba(0, 0, 0, 0.8);
+    }
+
+    .goods-video-row {
+      .col {
+        float: left;
+
+        & + .col {
+          margin-left: 50px;
+        }
+
+      }
+
+      .btn-buy, .btn-cart {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-buy {
+        margin-top: 10px;
+        .button-size(280px, 42px, 3px);
+        .button-variant(#fff, #007ce7, transparent);
+      }
+
+      .btn-cart {
+        margin-top: 15px;
+        .button-size(280px, 42px, 3px);
+        .button-variant(#fff, #ea8c00, transparent);
+      }
+
+      .video-box {
+        width: 606px;
+        height: 390px;
+        background-color: #000;
+      }
+
+      .video-info-table {
+        width: 100%;
+        margin-top: 15px;
+        line-height: 26px;
+
+        .name {
+          padding-left: 8px;
+        }
+
+        .value {
+          color: #666;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 40px;
+    }
+
+    .video-desc {
+      & + .video-desc {
+        margin-top: 10px;
+      }
+    }
+
+    .desc-toggle {
+      display: block;
+      color: #1d8ef1;
+
+    }
+
+    .goods-block-collapse {
+      color: #1d8ef1;
+      position: absolute;
+      right: 15px;
+      top: 22px;
+      line-height: 20px;
+      font-size: 14px;
+    }
+  }
+}

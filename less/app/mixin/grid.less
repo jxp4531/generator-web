@@ -1,0 +1,35 @@
+//
+// Grid Widget
+//-------------------------------
+.make-grid-widget(@class, @columns, @gutter, @row-gutter, @all) when (@all = true) {
+  .@{class}-grid {
+    .make-grid-container(@gutter);
+  }
+
+  .@{class}-row {
+    .make-grid-row(@gutter);
+  }
+
+  .@{class}-row + .@{class}-row {
+    margin-top: @row-gutter;
+  }
+
+  .make-grid-columns(@class, @columns, @gutter);
+  .make-grid(@class, @columns, @gutter);
+}
+
+.make-grid-widget(@class, @columns, @gutter,@row-gutter) {
+  .@{class}-grid {
+    .make-grid-container(@gutter);
+  }
+
+  .@{class}-row {
+    .make-grid-row(@gutter);
+  }
+
+  .@{class}-row + .@{class}-row {
+    margin-top: @row-gutter;
+  }
+
+  .make-columns(@class, @columns, @gutter);
+}

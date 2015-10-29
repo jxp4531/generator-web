@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "dependencies": {
+    "grunt": "latest",
+    "grunt-autoprefixer": "^3.0.3",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-htmlmin": "latest",
+    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-svgmin": "latest",
+    "grunt-usemin": "latest",
+    "rjs-build-analysis": "0.0.3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "trade",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "jquery": "latest",
+    "iCheck": "icheck#~1.0.2",
+    "requirejs": "~2.1.20"
+  }
+}

@@ -1,0 +1,124 @@
+//container
+.make-grid-container(@gutter) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: (@gutter / 2);
+  padding-right: (@gutter / 2);
+  &:extend(.clearfix all);
+}
+
+//row
+.make-grid-row(@gutter) {
+  margin-left: ceil((@gutter / -2));
+  margin-right: floor((@gutter / -2));
+  &:extend(.clearfix all);
+}
+
+//columns
+
+.make-columns(@class,@columns,@gutter) {
+  .make-grid-columns(@class, @columns, @gutter);
+  .float-grid-columns(@class, @columns);
+  .loop-grid-columns(@columns, @class, width, @columns);
+}
+
+.make-grid-columns(@class,@columns,@gutter) {
+
+  .col(@index) {
+    // initial
+    @item: ~".@{class}-col-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @columns) {
+    // general; "=<" isn't a type
+    @item: ~".@{class}-col-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @columns) {
+    // terminal
+    @{list} {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      // Inner gutter via padding
+      padding-left: ceil((@gutter / 2));
+      padding-right: floor((@gutter / 2));
+    }
+  }
+  .col(1); // kickstart it
+}
+
+//column float
+.float-grid-columns(@class,@columns) {
+  .col(@index) {
+    // initial
+    @item: ~".@{class}-col-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @columns) {
+    // general
+    @item: ~".@{class}-col-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @columns) {
+    // terminal
+    @{list} {
+      float: left;
+    }
+  }
+  .col(1); // kickstart it
+}
+
+//column width
+.calc-grid-column(@index, @class, @type,@columns) when (@type = width) and (@index > 0) {
+  .@{class}-col-@{index} {
+    width: percentage((@index / @columns));
+  }
+}
+
+//column push
+.calc-grid-column(@index, @class, @type,@columns) when (@type = push) and (@index > 0) {
+  .@{class}-col-push-@{index} {
+    left: percentage((@index / @columns));
+  }
+}
+
+.calc-grid-column(@index, @class, @type,@columns) when (@type = push) and (@index = 0) {
+  .@{class}-col-push-0 {
+    left: auto;
+  }
+}
+
+//column pull
+.calc-grid-column(@index, @class, @type,@columns) when (@type = pull) and (@index > 0) {
+  .@{class}-col-pull-@{index} {
+    right: percentage((@index / @columns));
+  }
+}
+
+.calc-grid-column(@index, @class, @type,@columns) when (@type = pull) and (@index = 0) {
+  .@{class}-col-pull-0 {
+    right: auto;
+  }
+}
+
+//column offset
+.calc-grid-column(@index, @class, @type,@columns) when (@type = offset) {
+  .@{class}-col-offset-@{index} {
+    margin-left: percentage((@index / @columns));
+  }
+}
+
+.loop-grid-columns(@index, @class, @type,@columns) when (@index >= 0) {
+  .calc-grid-column(@index, @class, @type, @columns);
+  .loop-grid-columns((@index - 1), @class, @type, @columns);
+}
+
+// Create grid
+.make-grid(@class,@columns) {
+  .float-grid-columns(@class);
+  .loop-grid-columns(@columns, @class, width, @columns);
+  .loop-grid-columns(@columns, @class, pull, @columns);
+  .loop-grid-columns(@columns, @class, push, @columns);
+  .loop-grid-columns(@columns, @class, offset, @columns);
+}

@@ -1,0 +1,23 @@
+.make-caret(@dir,@width:10px,@height:7px,@color:#000) when (@dir = down) {
+  width: 0;
+  height: 0;
+  border-left: @width / 2 solid transparent;
+  border-right: @width / 2 solid transparent;
+  border-top: @height solid @color;
+}
+
+.make-caret-color(@dir,@color) when (@dir = down) {
+  border-top-color: @color;
+}
+
+.make-caret(@dir,@width:10px,@height:7px,@color:#000) when (@dir = up) {
+  width: 0;
+  height: 0;
+  border-left: @width / 2 solid transparent;
+  border-right: @width / 2 solid transparent;
+  border-bottom: @height solid @color;
+}
+
+.make-caret-color(@dir,@color) when (@dir = up) {
+  border-bottom-color: @color;
+}

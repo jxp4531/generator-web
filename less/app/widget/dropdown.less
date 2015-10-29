@@ -1,0 +1,80 @@
+//
+// Dropdown menus
+// --------------------------------------------------
+
+@dropdown-transition: 0.3s;
+.caret {
+  font-size: @font-size-small - 2;
+  display: inline-block;
+  margin-left: 4px;
+  margin-top: -1px;
+
+  .dropdown.fade & {
+    transition: transform @dropdown-transition;
+  }
+
+  .dropdown.fade.in &{
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown {
+  position: relative;
+  overflow: hidden;
+
+  &.open {
+    overflow: visible;
+  }
+}
+
+.dropdown-toggle {
+  display: block;
+        text-align: center;
+  &:focus {
+    outline: 0;
+  }
+}
+
+.dropdown-gutter {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  text-align: left;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  min-height: 100px;
+  padding: 10px;
+  margin-top: 3px;
+  border: 1px solid #E6E6E6;
+  background-color: #fff;
+
+  .fade & {
+    transition: transform @dropdown-transition,opacity @dropdown-transition;
+    transform: scale(0.95, 0.95);
+    transform-origin: 0 0;
+    opacity: 0.5;
+  }
+
+  .fade.in & {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+// Menu positioning
+.dropdown-menu-right {
+  left: auto; // Reset the default from `.dropdown-menu`
+  right: 0;
+}
+
+.dropdown-menu-left {
+  left: 0;
+  right: auto;
+}

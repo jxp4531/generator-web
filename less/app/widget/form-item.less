@@ -1,0 +1,87 @@
+@import "../../sprite/form";
+
+.make-icheck() {
+
+  @sprite_img: '../img/dist/form.png';
+  .icheckbox,
+  .iradio {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+    margin-right: 10px;
+  }
+
+  .iradio {
+    .form_radio_no();
+  }
+  .iradio.hover {
+    .form_radio_no();
+  }
+  .iradio.checked {
+    .form_radio_yes();
+  }
+  .iradio.disabled {
+    .form_radio_no();
+    cursor: not-allowed;
+  }
+  .iradio.checked.disabled {
+    .form_radio_yes();
+  }
+
+  .icheckbox {
+    .form_checkbox_no();
+  }
+  .icheckbox.hover {
+    .form_checkbox_no();
+  }
+  .icheckbox.checked {
+    .form_checkbox_yes();
+  }
+  .icheckbox.disabled {
+    .form_checkbox_no();
+    cursor: not-allowed;
+  }
+  .icheckbox.checkbox.disabled {
+    .form_radio_yes();
+  }
+}
+
+input[type="text"],
+textarea {
+  border: 1px solid #999999;
+  padding: 0 10px;
+}
+
+.make-date() {
+  @sprite_img: '../img/dist/form.png';
+
+  .date {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    .icon {
+      .form_date_icon();
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      top: 50%;
+      margin-top: -12px;
+      right: 8px;
+    }
+
+    input[type="text"] {
+      display: block;
+      width: 100%;
+      padding-right: 42px;
+      height: 34px;
+      line-height: 32px;
+    }
+  }
+}
