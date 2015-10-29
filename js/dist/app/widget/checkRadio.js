@@ -1,0 +1,1 @@
+define(["jquery","icheck"],function(e){return e('input[type="checkbox"],input[type="radio"]').iCheck({checkboxClass:"icheckbox",radioClass:"iradio"}),e});
