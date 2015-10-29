@@ -1,5 +1,6 @@
 {
   "firstedit":"",
+  "secondedit":"",
   "name": "trade",
   "private": true,
   "dependencies": {
