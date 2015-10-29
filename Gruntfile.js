@@ -30,7 +30,8 @@ module.exports = function (grunt) {
      *
      * **/
 
-    var imgExts = 'png,jpg,jpeg',
+    var options,
+        imgExts = 'png,jpg,jpeg',
         getRequirejsOpts = function (dist) {
             return {
                 optimize: dist ? 'uglify' : 'none',
