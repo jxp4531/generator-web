@@ -74,11 +74,11 @@ module.exports = function (grunt) {
             clean: {
                 dist: [
                     '<%=config.dest.css %>**',
-                    '<%=config.dest.img %>**'
+                    '<%=config.dest.img %>**',
+                    '<%=config.src.js %>/lib/**'
                 ],
                 js: [
-                    '<%=config.dest.js %>**',
-                    '<%=config.src.js %>/lib/**'
+                    '<%=config.dest.js %>**'
                 ]
             },
             imagemin: {
