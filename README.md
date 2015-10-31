@@ -21,17 +21,86 @@
 查看DEMO：https://liuyunzhuge.github.io/generator-web/
 注意：该DEMO是gh-pages搭建，由于github提供的这种服务仅支持静态网页，所以你打开demo看到的首页，是用jsp页面转化过来的，目的是为了让你看到基于本脚手架开发出的项目在实际部署后的应用效果，实际项目打包后的文件结构不一定与gh-pages分支的内容一样。另外该demo只开发了一个首页，但是再开发更多页面也是轻而易举的事。
 
-## 使用
+## 安装
+
+由于本项目是结合javaweb一起发布的，所以以下的使用步骤均是在java的开发环境下说明的，IDE为Intellij IDEA。如果你的项目也是javaweb项目，那么推荐你用这个IDE，这是本人用过的最好的java web开发工具，集成了众多前端工具，比如less，emmet和grunt还有bower等。如果你用它来开发项目，你会发现编写less和使用grunt是如此顺畅！
 
 ### 第一步
-安装nodejs,git,bower,grunt。windows下安装即可，别搞什么linux。没见过几个在linux下开发的，不是所有人都买得起苹果的笔记本。
+
+安装nodejs,git,bower,grunt。windows下安装即可，不需要linux。
 其中：
 nodejs,git官网都有windows的安装包
-bower和grunt的安装都是通过命令行安装的，百度都能找到相应的官网，花半天到1天的时间，就能了解它们的作用和基本用法
+bower和grunt的安装都通过命令行安装，百度都能找到相应的官网，花半天到1天的时间，就能了解它们的作用和基本用法
+```
+npm install -g bower
+npm install -g grunt-cli
+``` 
+注：这一步与IDE和后端语言没有任务关系。
 
 ### 第二步
 
+新建javaweb项目，比如我用IDEA新建一个项目名为generator-web，它的项目结构如下：
+```
+.idea/
+src/
+web/
+generator-web.iml
+```
+其中.iead/和generator-web.iml都是IDEA建完项目以后创建的，可以不用管。src是java源文件的目录，web文件夹是项目的web根目录。
 
+### 第三步
+
+download zip或者用git  clone本项目，复制本项目的以下文件夹或文件粘贴到你项目的web跟目录（前一步提到的web文件夹）：
+```
+html/
+img/
+js/
+less/
+WEB-INF/
+bower.json
+Gruntfile.js
+optimize.json
+package.json
+```
+
+最后你的项目结构应该如下：
+```
+.idea/
+src/
+web/
+	html/
+	img/
+	js/
+	less/
+	WEB-INF/
+	bower.json
+	Gruntfile.js
+	optimize.json
+	package.json
+generator-web.iml
+```
+
+### 第四步
+
+使用bower安装bower.json中配置的库：jquery,iCheck,requirejs,bootstrap：
+```
+bower install --save
+```
+注：以上库除requirejs是脚手架必须的外，其它均可根据实际项目需要进行添加和删除，jquery,iCheck,bootstrap是demo中用到的。
+
+安装grunt和grunt插件：
+```
+npm install --save
+```
+如果npm安装速度慢，可以百度搜淘宝npm，使用淘宝提供的镜像原安装，速度会快一些。
+
+### 第五步
+执行grunt的default任务，这个任务是开发环境的构建任务，启动之后任务不会关闭，后台自动监控less/和js/src/和img/src/文件夹的变化，并在变化时自动调用相关任务处理编译和复制的问题：
+```
+grunt default
+```
+
+启动你的web服务器，比如tomcat。打开浏览器访问应该就能看到跟demo一致的首页效果:）。
 
 
 完善中...

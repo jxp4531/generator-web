@@ -77,7 +77,8 @@ module.exports = function (grunt) {
                     '<%=config.dest.img %>**'
                 ],
                 js: [
-                    '<%=config.dest.js %>**'
+                    '<%=config.dest.js %>**',
+                    '<%=config.src.js %>/lib/**'
                 ]
             },
             imagemin: {
@@ -116,6 +117,12 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%=config.bowerDir %>/iCheck/',
                     src: ['icheck.js'],
+                    dest: '<%=config.src.js %>lib/'
+                },
+                transitionjs: {
+                    expand: true,
+                    cwd: '<%=config.bowerDir %>/bootstrap/js/',
+                    src: ['transition.js'],
                     dest: '<%=config.src.js %>lib/'
                 },
                 jquery: {
