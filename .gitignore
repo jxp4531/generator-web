@@ -51,5 +51,6 @@ bower_components
 node_modules
 /css
 /img/dist
+/js/lib
 /js/dist
 .git
