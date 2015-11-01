@@ -42,7 +42,7 @@ package.json 这是grunt依赖的配置文件
 ```
 注：html/,img/,js/,less/这三个文件夹里面还有子文件夹，各自都有相关的约定，后续逐个介绍。在demo运行成功之前，那几个配置文件请先不要改动。
 
-## DEMO
+### DEMO
 
 查看DEMO：https://liuyunzhuge.github.io/generator-web/ 支持IE9+，chrome，firefox。
 
@@ -143,7 +143,7 @@ http://localhost:8080/generator-web-demo/
 
 如果你在运行的demo过程中遇到有任何问题，尽管发起issue跟我讨论，欢迎~
 
-## 4如何在demo的基础上进行开发
+## 4. 如何在demo的基础上进行开发
 
 ### 4.1 开发页面
 每开发一个页面都放在html/下面，目前demo内包含：
