@@ -1,5 +1,5 @@
 # generator-web
-## 概述
+## 1. 概述
 本项目是一个脚手架，应用于前后端结合型项目，可以为这种项目提供如下服务：
 * 图片压缩，支持png,jpg,gif格式图片
 * css模块化，使用less编写css
@@ -15,7 +15,7 @@
 * 图片的优化，css和js的压缩合并，极大地减少了请求的数据量和请求数，十分利于项目的访问性能
 * 前端任务全自动构建，不用担心编译和文件拷贝等之类的问题，遵循本项目的约定，你会发现css和js的开发结构是如此清晰
 
-## 项目结构
+## 2. 项目结构
 ```
 WEB-INF/
 html/
@@ -48,11 +48,11 @@ package.json 这是grunt依赖的配置文件
 
 注意：该DEMO是gh-pages搭建，你可以通过查看本项目的gh-pages分支看到demo的文件内容，由于github提供的这种服务仅支持静态网页，所以demo的首页其实是由html/index.jsp转化过来的，另外位置也变了一下，index.jsp原来是放置在html/下面的，gh-pages分支里的index.html放在了跟html/同级的位置，不这么干的话，gh-pages就看不到效果了。
 
-## 安装
+## 3. 安装
 
 由于本项目是结合javaweb一起发布的，所以以下的使用步骤均是在java的开发环境下说明的，IDE为Intellij IDEA。如果你的项目也是javaweb项目，那么推荐你用这个IDE，这是本人用过的最好的java web开发工具，集成了众多前端工具，比如less，emmet和grunt还有bower等。如果你用它来开发项目，你会发现编写less和使用grunt是如此顺畅！纯粹的后台开发可能不挑剔开发工具，但是前端开发如果要结合后台一起弄一下的话， 最好还是使用高级一点的IDE。
 
-### 第一步
+### 3.1 第一步
 
 安装nodejs,git,bower,grunt。windows下安装即可，不需要linux。
 其中：
@@ -65,7 +65,7 @@ package.json 这是grunt依赖的配置文件
 
 注：这一步与IDE和后端语言没有任何关系。不管什么语言的项目，这个都是使用本脚手架的基础。
 
-### 第二步
+### 3.2 第二步
 
 新建web项目，比如我用IDEA新建一个项目名为generator-web-demo，它的项目结构如下：
 ```
@@ -76,7 +76,7 @@ generator-web-demo.iml
 ```
 其中.iead/和generator-web.iml都是IDEA建完项目以后创建的，可以不用管。src是java源文件的目录，web文件夹是项目的web根目录。
 
-### 第三步
+### 3.3 第三步
 
 download zip或者用git  clone本项目，复制本项目的以下文件夹或文件粘贴到你项目的web根目录（前一步提到的web文件夹）：
 ```
@@ -109,7 +109,7 @@ web/
 generator-web-demo.iml
 ```
 
-### 第四步
+### 3.4 第四步
 
 使用bower安装bower.json中配置的库（jquery,iCheck,requirejs,bootstrap）
 ```
@@ -124,7 +124,7 @@ npm install --save
 如果npm安装速度慢，可以按下面网址提供的方式安装，速度会快一些：
 http://npm.taobao.org/
 
-### 第五步
+### 3.5 第五步
 执行grunt的default任务：
 ```
 grunt default
@@ -143,10 +143,10 @@ http://localhost:8080/generator-web-demo/
 
 如果你在运行的demo过程中遇到有任何问题，尽管发起issue跟我讨论，欢迎~
 
-## 如何在demo的基础上进行开发
+## 4如何在demo的基础上进行开发
 
-### 开发页面
-页面都放在html/下面，demo内包含：
+### 4.1 开发页面
+每开发一个页面都放在html/下面，目前demo内包含：
 ```
 html/
    base/
@@ -156,19 +156,21 @@ html/
    index.jsp
    ltIE9.html
 ```
-其中：base/下的是一些公共的jsp页面，你看下index.jsp里面的那些inclue你留明白了。
+其中：base/下的是一些公共的jsp页面，你看下index.jsp里面的那些inclue你就明白了。
 ltIE9.html是一个提示页面，如果用户以IE8及以下的IE浏览器访问就会调到这个页面提示更新浏览器或者下其它的好用的浏览器。
 
-如果你的项目是asp.net的项目，记得把这些jsp都替换成aspx，基本上是差不多的。
+如果你的项目是asp.net的项目，请把这些jsp都替换成aspx。
 
-这个html/的思路是这样的，base/放公共的，其它页面按模块分，如果一个模块只有一个页面，那么就把它直接放在html/下面，如果一个模块有多个页面，可以在html/以模块名建一个文件夹，相关页面都放那里面。
+这个html/的思路是：base/放公共的，其它页面按模块分，如果一个模块只有一个页面，那么就把它直接放在html/下面，如果一个模块有多个页面，可以在html/以模块名建一个文件夹，相关页面都放那里面。
 
-### baseUrl的问题
+你在开发页面的时候，建议：__html/base/下的公共jsp保留，新页面以index.jsp为参考进行开发，可以往base/内添加更多公共页面，也可按模块对新页面进行分类。__
+
+### 4.2 baseUrl的问题
 这个问题是这样的，打比方说：
 * 你如果用eclispe开发项目，启动tomcat以后，打开浏览器访问，必须以[http://主机名:端口/工程名/]的方式才能访问，以generator-web-demo举例，就必须用[http://localhost:8080/generator-web-demo/]才能访问，当然这个能改，我这里是拿一般情况举例
-* 如果是IEAD开发，就不用考虑这个工程名的问题，因为它的tomcat默认配置，就是省略工程名的访问方式，它可以直接通过http://localhost:8080/访问
-* 这个工程名的配置就是contextpath，因为这个contextpath的存在可能导致你页面里的css，img，和script的href或src属性设置时，存在一些疑惑，比如出现加载不到资源的情况，所以通常在前后端结合型项目中，一定得把这个contextpath统一起来，让所有的资源加载都是相对同一个路径进行解析
-* 常见的处理方式就是把所有资源的url的contextpath之前的那一段设置到html的base元素上，由于base元素的作用，可以保证脚本和css还有图片的加载都相对于这个base的href属性进行解析
+* 如果是IDEA开发，就不用考虑这个工程名的问题，因为它的tomcat默认配置，就是省略工程名的方式，它可以直接通过http://localhost:8080/访问
+* 这个工程名的配置就是contextpath，因为这个contextpath的存在可能导致你页面里的css，img，和script加载时出现加载不到资源的情况，所以通常在前后端结合型项目中，一定得把这个contextpath统一起来，让所有的资源加载都是相对同一个路径进行解析
+* 常见的处理方式就是把所有资源的url的contextpath及之前的那一段设置到html的base元素上，由于base元素的作用，可以保证脚本和css还有图片的加载都相对于这个base的href属性进行解析
 
 base元素设置的代码如下<head_start.jsp>：
 ```html
@@ -188,33 +190,37 @@ base元素设置的代码如下<head_start.jsp>：
     <meta http-equiv="Refresh" content="0; url=${base}html/ltIE9.html"/>
     <![endif]-->
 ```
-如何引用css，图片和js:
+引用css，图片和js时，直接使用相对web根目录的路径进行引用:
 ```
 <link href="css/index.css" rel="stylesheet">
 <img src="img/dist/logo.png" alt="LOGO">
 <script data-main="js/dist/mod/index" src="js/dist/lib/require.js"></script>
 ```
-直接相对web根目录的即可！~
+还记得web根目录的这个结构吧：
+```
+web/
+    img/
+    css/
+    js/
+```
 
-### 图片
-
-脚手架约定，项目相关的图片放在img文件夹下，img/的结构为：
+### 4.3 图片
+约定项目相关的图片放在img文件夹下，img/的结构为：
 ```
 img/
    dist/
    src/
    temp/
 ```
-美工给你提供的切图或者你自己在网上找到的图片都放置在src文件夹，grunt的任务会帮你把图片优化之后复制的dist文件夹内，你在页面或css还有js中引用图片的时候，只要引用dist文件夹即可，如：
-```
-<img src="dist/logo.pn" alt="log">
-```
-temp文件夹的作用是存放雪碧图制作的源文件，如果你想把多张图片制作成雪碧图的话，可以把每张雪碧图的图片都在temp文件夹内再新建一个文件夹存放，这个文件夹的名称跟你雪碧图的名称一致即可，最后把雪碧图放到src文件夹内即可。之所以这么做，是因为雪碧图可能需要经常调整，这样更方便管理。
-雪碧图制作推荐使用腾讯的gopng工具，这是一个在线制作雪碧图的工具，可支持生成雪碧图，定义雪碧图相关的css模板和导出每次雪碧图的配置文件，下次要修改的时候，直接把配置文件拖入到工具内就能在上次的状态继续编辑！
+这个目录结构最好是不改变。其中：
+* dist/存放经过grunt图片优化任务之后的图片，也是代码中图片的引用路径
+* src/存放待优化的图片源文件
+* temp/按雪碧图存放各个雪碧图的原图片文件，比如你制作了一张雪碧图，你把它命名为common.png，那么就在temp/里面，新建一个common的文件夹，把你制作雪碧图时用到的源图都放进去，这样将来你需要调整雪碧图的时候还能从这里找到源图，雪碧图制作推荐这个工具：http://alloyteam.github.io/gopng/ ,使用它还可以把你每次制作雪碧图的配置导出到本地，下次要修改的时候，重新导入之前的配置，就能上次的状态下继续编辑
 
-### less
+__每增加一张图片或雪碧图，就把它丢到img/src里面，页面或css中引用图片时，直接使用img/dist/这个路径去引用即可__
 
-脚手架约定，css都用less来编写，less文件夹的结构为：
+### 4.4 less
+约定，css都用less来编写，less文件夹的结构为：
 ```
 less/
     app/
@@ -224,23 +230,24 @@ less/
     mod/
     sprite/
 ```
-less/app存放公共的一些css模块，每个页面的less都在less/mod下定义，sprite/存放雪碧图相关的less，具体使用说明如下：
+其中：
+* app/icon/ 存放字体图标文件，以及字体图标的less，比如你如果用iconfont，那么就要把下载下来的iconfont的字体文件复制到app/icon/，把iconfont.css另存成iconfont.less也另存到这个文件夹，grunt的less任务会把iconfont.less跟app/mod/下的less一起编译，然后把字体文件直接复制到web/css/文件夹下
+* app/mixin/存放一些定义的less mixin，demo中很多mixin是从bootstrap的源码中提取的
+* app/wifdget/存放一些公共组件的less，对于一些公共的模块，比如等header,footer，搜索框，购物车等都可以定义成单个的模块，哪个页面的用到了这个模块，就import一下就好了
+* sprite/存放雪碧图相关的less，制作雪碧图时，gopng这个工具会给你提供它生成的css，你可以把它另存为less，我的做法是把雪碧图里每个背景图的css都定义成了mixin,这样html元素在用到某哥背景图时，只要引入这个less文件，调一下mixin就可以了，具体的方式，请参考demo里面sprite/下的两个less的定义方式，以及app/mod/index.less中的使用方式
+* app/mod/存放页面的less文件，基本上每个页面一个less，也按模块再建文件夹进行分类，跟开发新页面一样的道理
 
-1. 字体图标请放到less/app/icon/下，字体图标的相关的css需要另存为less文件存放，也是放在less/app/icon下
-2. mixin都放在less/app/mixin下
-3. 公用模块可放在les/app/widget下
-4. grunt任务会把less/mod下的less文件全部编译好然后放到web/css/文件夹下，会把less/app/icon下的字体文件复制到web/css文件夹下。
-5. less/mod下的less可通过import和变量去使用app和sprite下面的css，具体可查看demo里面的less/mod/index.less
-6. 页面中通过css/index.css的方式引用css，参考index.jsp。
+grunt的less任务，会把app/icon/下的字体拷贝到web/css/下，把app/mod/下的less编译成的css也放到web/css/下，所以页面引入css的时候，要相对css/这个文件夹引用：
+```
+<link href="css/index.css" rel="stylesheet">
+```
 
-以上less的文件夹结构可根据项目的需要调整，不过相应的Gruntfile.js里面的任务也需要去调整。
+在这一块需要注意的问题是字体文件和图片文件的路径问题，记住less编译后的css是放在css/下面的，而图片都是要通过img/dist才能引用的；字体文件跟css默认都是直接位于css/目录下的，具体请多参考demo中app/mod/index.less。
 
-### js
-
-脚手架约定，所有js都在js/src文件夹下定义，因为grunt会把src下的文件最后都复制到js/dist文件夹下，在没有使用优化工具之前，js/dist和js/src下的文件没有区别。js/的结构：
+### 4.5 js
+约定js源码都在js/src/下定义，js/src/的结构为
 ```
 js/
-   js/dist/
    js/src/
        app/
           mod/
@@ -249,50 +256,41 @@ js/
        mod/
        common.js
 ```
-这个结构不能改变，这是受requirejs开发多页程序时，使用优化工具的限制。其中：
+其中：
+* common.js是requirejs的配置文件
+* js/src/mod/存放各个页面的main.js，每个页面底部的script标签上的data-main就是引用的这个文件夹下的js文件如：```<script data-main="js/dist/mod/index" src="js/dist/lib/require.js"></script>```
+* js/src/lib/存放依赖的js库，比如jquery,icheck,bootstrap的transition都会通过grunt的任务，从bower下载的位置拷贝到这里，具体请看gruntfile.js的copy任务，同时这个文件夹也是requirejs的baseUrl的位置
+* js/src/app/mod/存放各个页面真正执行逻辑的js
+* js/src/app/widget存放组件相关的js，比如demo中定义了四个组件，tab,carousel,icheck,radioToggle
 
-js/src/common.js是requirejs的配置文件，baseUrl,shim都是配置在那的。
+在没有优化之前，grunt任务会把js/src/的文件全部拷贝到js/dist/下，在优化之后，grunt任务会把js/dist/mod/下的每个js依赖的所有js，都跟它合并成为一个js。
 
-js/src/mod存放每个页面的js，这个js代码很简单
+一个页面相关的js整个加载流程，以demo中的index.js为例：
+* 首先页面中先通过：```<script data-main="js/dist/mod/index" src="js/dist/lib/require.js"></script>```加载js/dist/mod/index.js
+* 由于index.js的源码为：
 ```
 requirejs(['../common'], function (common) {
     requirejs(['app/mod/index']);
 });
 ```
-js/src/mod下每个文件的结构应该都跟上面的代码一致，因为页面真正的js是在js/app/mod下，之所以需要这一层跳转是为了保证common.js始终在页面的js之前加载，否则页面的js将读不到common.js里的配置。
+它会先加载common.js读取配置，然后再加载js/dist/app/mod/index.js执行页面的逻辑
+* 到了js/dist/app/mod/index.js后，就是加载各个依赖的模块处理页面逻辑的过程了，整个js的异步依赖跟加载情况就结束了。
 
-具体可参考js/src/mod/index.js的写法。引用的时候参考index.jsp。
-
-## 构建
-
-### 开发环境
+所以开发一个js的步骤为，以userCenter.js为例：
+* 在js/src/mod/下新建一个userCenter.js
+* 在js/src/app/mod/下也新建一个userCenter.js
+* 将js/src/mod下的userCenter.js的源码改为：
 ```
-grunt default
+requirejs(['../common'], function (common) {
+    requirejs(['app/mod/userCenter']);
+});
 ```
-使用以上任务就会启动构建：
+因为js/src/mod/下的js都仅是一个桥梁，所以这个文件夹下的每个js都只有三行。
+* 在js/src/app/mod/userCenter.js中编写你的页面逻辑
+* 在optimize.json中增加一个对userCenter.js的配置项，以便生产环境构建时能把它依赖的js都跟它合并成一个js
 
-1. 优化图片，并将优化后的图片存放至img/dist/
-2. 编译less/mod下的less，并存放至css/
-3. 将js/src/下所有内容，拷贝至js/dist/
-4. 监控img/src/，less/，js/src/内的文件变化，一有变化，自动执行相应的1,2,3
-
-开发环境的构建不会：
-
-1. 压缩css，方便你去调试
-2. 不会压缩合并和混淆js，方便调试
-
-### 生产环境
-```
-grunt release
-```
-使用以上任务，完成生产环境构建：
-
-1. 在开发环境构建基础上，进行css压缩
-2. 使用requirejs的优化工具优化页面的js，即将它所依赖的模块全部合并成一个js，并做压缩混淆处理，这样页面的js只要加载一次，就把它依赖的所有js都加载过来了。
-
-
-## 优化配置
-这里说的是requirejs的优化配置，由于requirejs的优化需要为每个页面的js配置一次，所以为了避免直接在gruntfile.js里去配置，将所有要优化的模块都配置在optimize.json文件里：
+#### 4.5.1 如何配置optimize.json
+简单点来说，照着这个模板就可以了：
 ```
 [
     {
@@ -303,16 +301,81 @@ grunt release
     }
 ]
 ```
-每增加一个页面，就要在这个数组里增加一个条目。配置方式类似上面的代码，具体的原理可去参考requirejs官方文档中关于优化工具的配置说明，如果你不想搞那么明白，可以就按上面的方式配置即可。
+比如如果userCenter.js，那么就该配置成：
+```
+[
+    {
+        "name": "../mod/index",
+        "include": [
+            "app/mod/index"
+        ]
+    },
+    {
+        "name": "../mod/userCenter",
+        "include": [
+            "app/mod/userCenter"
+        ]
+    }    
+]
+```
+具体的原理牵扯的细节就比较多了，可参考以下两个网址去研究以下：
+* http://www.requirejs.cn/docs/optimization.html
+* https://github.com/requirejs/example-multipage
 
-## 打包
+## 5 构建
 
-前面说过，打包要靠后台，步骤如下：
+### 5.1 开发环境
+```
+grunt default
+```
+使用以上任务就会启动构建：
 
-1. 先执行`grunt release`任务，然后提交至版本管理
-2. 后台同事在他的工程里把img/src/,img/temp/，less/和js/都排除出去，然后用maven或者IDE打包即可。
+1. 优化图片，并将优化后的图片存放至img/dist/
+2. 编译less/mod下的less，并存放至css/
+3. 将less/app/icon下的字体文件，拷贝到css/
+3. 将js/src/下所有内容，拷贝至js/dist/
+4. 监控img/src/，less/，js/src/内的文件变化，一有变化，自动执行相应的1,2,3
 
-##下个版本计划：
+这个构建不会压缩css，不会合并压缩混淆js。
 
+### 5.2 生产环境
+```
+grunt release
+```
+使用以上任务，完成生产环境构建：
+
+1. 在开发环境构建基础上，进行css压缩
+2. 使用requirejs的优化工具优化页面的js，即将它所依赖的模块全部合并成一个js，并做压缩混淆处理
+
+### 5.3 optimize
+```
+grunt optimize
+```
+这个任务可用于测试requirejs的合并是否正确，这么操作：
+* 先执行```grunt default```
+* 再执行```grunt optimize```
+* 看看js/dist/mod/下的js，刷新浏览器测试下功能
+
+之所以没跟default任务合并，是因为这个优化任务比较费时
+
+## 6. 打包
+打包前，先执行下```grunt default```，提交至代码管理器，git或者svn。另外bower_components和node_modules这两个文件夹千万别传到代码服务器上去，前端用的东西，打包的后台同事怎么会要你这个呢
+还要记得提醒他们把以下文件从工程中排除出去：
+```
+img/src/
+img/temp/
+js/src/
+less/
+```
+这些文件是没有必要发布出去的。至于具体怎么打包，就是后台同事的责任了。
+
+## 7. 下个版本计划：
+
+目前已知的未解决的问题：
+* requirejs异步加载js时的缓存问题，特别严重，目前开发环境可通过配置requirejs的urlArgs解决，但是生产环境时不能用这个
+* 静态资源更新的问题
+* 自动base64编码
+
+下一步计划：
 1. 字体文件和图片文件自动做base64编码
-2. css和js的md5处理
+2. css和js的md5处理，解决静态资源更新的问题
